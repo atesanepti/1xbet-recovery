@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
+import Header from "@/components/headers/Header";
+
 
 export default function Home() {
   return (
     <div>
-      <Button variant={"primary"}>Primary</Button>
-      <Button variant={"secondary"}>secondary</Button>
-      <Button variant={"ghost"}>ghost</Button>
+      <Header />
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default {
         brand: { DEFAULT: "#14A0FF", foreground: "#7daa2f" },
         primary: {
           DEFAULT: "#377BBB",
-          foreground: "#377BBB",
+          foreground: "#1A5684",
         },
         secondary: {
           DEFAULT: "#24507D",
