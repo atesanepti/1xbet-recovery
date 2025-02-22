@@ -139,3 +139,49 @@
     @apply bg-background text-foreground;
   }
 }
+
+.container {
+  @apply w-[98%] md:w-[90%] lg:w-[85%] mx-auto;
+}
+
+/* .scrollbar-min::-webkit-scrollbar {
+  width: 10px;
+} */
+.scrollbar-min::-webkit-scrollbar-track {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #7f7f7f;
+    border-radius: 10px;
+  }
+}
+.scrollbar-min {
+  scrollbar-width: thin;
+  scrollbar-color: #7f7f7f #f1f1f1;
+}
+
+.content-link {
+  position: relative;
+}
+.content-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #d3e0f0;
+  overflow: hidden;
+  transition: all 500ms ease;
+}
+.content-link:hover::after {
+  width: 100%;
+ 
+}

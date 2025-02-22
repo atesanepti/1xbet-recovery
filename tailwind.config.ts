@@ -34,14 +34,14 @@ export default {
           foreground: "#779ab8",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#23507d",
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        border: "hsl(var(--border))",
+        border: "#D6DBDD",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {
