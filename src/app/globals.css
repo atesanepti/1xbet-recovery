@@ -183,5 +183,7 @@
 }
 .content-link:hover::after {
   width: 100%;
- 
+}
+.carousel-content .carousel-item:not(:first-of-type) {
+  padding-left: 4px !important;
 }

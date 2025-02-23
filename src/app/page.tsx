@@ -4,6 +4,9 @@ import Footer from "@/components/landing/footer/Footer";
 import Header from "@/components/landing/headers/Header";
 import Hero from "@/components/landing/hero/Hero";
 import Sponsors from "@/components/landing/sponsors/Sponsors";
+import TabBar from './../components/landing/TabBar';
+
+
 
 export default function Home() {
   return (
@@ -16,6 +19,7 @@ export default function Home() {
         <Sponsors />
         <Footer />
       </div>
+      <TabBar />
     </div>
   );
 }
