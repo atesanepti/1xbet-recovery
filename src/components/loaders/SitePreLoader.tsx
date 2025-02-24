@@ -2,7 +2,7 @@ import React from "react";
 
 const SitePreLoader = () => {
   return (
-    <div className="w-full h-screen z-[1000000] bg-primary flex justify-center items-center fixed top-0 left-0">
+    <div className="w-full h-screen z-[1000000000] bg-primary flex justify-center items-center fixed top-0 left-0">
       <div className="w-[50px] md:w-[75px] h-[50px] md:h-[75px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"

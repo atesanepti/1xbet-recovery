@@ -6,7 +6,7 @@ import { IoTicketSharp } from "react-icons/io5";
 import Link from "next/link";
 const TabBar = () => {
   return (
-    <div className="bg-white shadow-sm fixed left-1/2 -translate-x-1/2 bottom-0 md:bottom-3 w-full md:w-[600px] md:rounded-full flex py-1 md:py-2">
+    <div className="bg-white shadow-lg border border-border fixed z-[500000000] left-1/2 -translate-x-1/2 bottom-0 md:bottom-3 w-full md:w-[600px] md:rounded-full flex py-1 md:py-2">
       <Link
         href="#"
         className="flex-1 flex justify-center items-center flex-col"

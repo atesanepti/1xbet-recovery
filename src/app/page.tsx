@@ -10,6 +10,9 @@ import SitePreLoader from "@/components/loaders/SitePreLoader";
 import { useEffect, useState } from "react";
 import Casino from "@/components/games/casino/Casino";
 import Live from "@/components/games/live/Live";
+import CricketSlider from "@/components/sports/CricketSlider";
+import FootballSlider from "@/components/sports/FootballSlider";
+import CompanyGames from "@/components/landing/CompanyGames";
 
 export default function Home() {
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -30,10 +33,15 @@ export default function Home() {
       <Header />
       <div className="container">
         <Hero />
+        <CompanyGames />
+        <CricketSlider />
+        <FootballSlider />
+
         <div className="bg-white p-4 md:p-6 rounded-md shadow-sm">
           <Casino />
           <Live />
         </div>
+
         <SiteContent />
         <About />
         <Sponsors />

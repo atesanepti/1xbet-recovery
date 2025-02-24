@@ -197,6 +197,13 @@
 }
 
 
-.sponsor-grid a:nth-child(5) {
-  grid-column: span 2;
+@layer components {
+  .sponsor-grid a:nth-child(5) {
+   @apply col-span-2 md:col-span-1 
+  }
+}
+/* swiper slider styles */
+.swiper {
+  width: 100%;
+  height: 100%;
 }
