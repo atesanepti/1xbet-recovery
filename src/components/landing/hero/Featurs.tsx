@@ -126,7 +126,7 @@ const Featurs = () => {
           {data.phone.map((f, i) => (
             <CarouselItem
               key={i}
-              className="basis-1/4 min-h-[155px] carousel-item"
+              className="basis-1/3 min-h-[155px] carousel-item"
             >
               <div className="p-2 w-full rounded-md shadow-md bg-white h-full  ">
                 <Image

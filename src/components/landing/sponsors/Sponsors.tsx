@@ -78,7 +78,7 @@ const Sponsors = () => {
   return (
     <div className="mb-6 md:mb-8 bg-secondary-foreground px-5 md:px-8 py-6 md:py-8 shadow-sm">
       <div className="flex flex-col justify-center mb-3 md:mb-4">
-        <h4 className="text-white text-sm md:text-lg font-semibold md:font-bold text-center my-3">
+        <h4 className="text-white text-base md:text-lg font-bold text-center my-3">
           Our Sports Sponsors
         </h4>
         <div className="grid sponsor-grid a gap-2 md:gap-3 grid-cols-[repeat(3,_minmax(0,1fr))] md:grid-cols-[repeat(5,_minmax(0,1fr))]  items-start justify-center">
@@ -101,7 +101,7 @@ const Sponsors = () => {
       </div>
 
       <div className="flex flex-col justify-center">
-        <h4 className="text-white text-sm md:text-lg font-semibold md:font-bold text-center my-3">
+        <h4 className="text-white text-base md:text-lg font-bold text-center my-3">
           Our E- Sports Sponsors
         </h4>
         <div className="grid sponsor-grid gap-2 md:gap-3 grid-cols-[repeat(3,_minmax(0,1fr))] md:grid-cols-[repeat(5,_minmax(0,1fr))]  items-start justify-center">

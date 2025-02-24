@@ -30,8 +30,10 @@ export default function Home() {
       <Header />
       <div className="container">
         <Hero />
-        <Casino />
-        <Live />
+        <div className="bg-white p-4 md:p-6 rounded-md shadow-sm">
+          <Casino />
+          <Live />
+        </div>
         <SiteContent />
         <About />
         <Sponsors />

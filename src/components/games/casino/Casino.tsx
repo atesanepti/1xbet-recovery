@@ -25,9 +25,9 @@ const casinoGames = [
 
 const Casino = () => {
   return (
-    <div className="bg-white p-4 md:p-6 rounded-md shadow-sm mb-3 md:mb-5">
+    <div className="  md:mb-2 border-b border-b-border">
       <div className="flex items-center justify-between pb-3">
-        <h4 className="font-semibold text-sm md:text-base text-accent uppercase">
+        <h4 className="font-bold text-sm md:text-base text-accent uppercase">
           Casino
         </h4>
         <Link
