@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-
+import React, { useState } from "react";
 
 import {
   Form,
@@ -14,36 +13,37 @@ import { FloatingInput, FloatingLabel } from "../ui/floating-label-input";
 import { Button } from "../ui/button";
 import SocialMediaLogin from "./SocialMediaLogin";
 import InputCommand from "../ui/command-input";
+import { Eye, EyeOff } from "lucide-react";
 
 const RegistationForm = () => {
   const form = useForm();
 
-  // const [passwordType, setPasswordType] = useState<"text" | "password">(
-  //   "password"
-  // );
+  const [passwordType, setPasswordType] = useState<"text" | "password">(
+    "password"
+  );
 
-  // const [confirmPasswordTrype, setConfirmPasswordType] = useState<
-  //   "text" | "password"
-  // >("password");
+  const [confirmPasswordTrype, setConfirmPasswordType] = useState<
+    "text" | "password"
+  >("password");
 
   const handleRegistation = () => {
     // TODO : handle login api call
   };
 
-  // const togglePasswordType = () => {
-  //   if (passwordType == "text") {
-  //     setPasswordType("password");
-  //   } else if (passwordType == "password") {
-  //     setPasswordType("text");
-  //   }
-  // };
-  // const toggleConfirmPasswordType = () => {
-  //   if (confirmPasswordTrype == "text") {
-  //     setConfirmPasswordType("password");
-  //   } else if (passwordType == "password") {
-  //     setConfirmPasswordType("text");
-  //   }
-  // };
+  const togglePasswordType = () => {
+    if (passwordType == "text") {
+      setPasswordType("password");
+    } else if (passwordType == "password") {
+      setPasswordType("text");
+    }
+  };
+  const toggleConfirmPasswordType = () => {
+    if (confirmPasswordTrype == "text") {
+      setConfirmPasswordType("password");
+    } else if (passwordType == "password") {
+      setConfirmPasswordType("text");
+    }
+  };
 
   return (
     <div className="w-full ">
@@ -178,21 +178,35 @@ const RegistationForm = () => {
             <FormField
               name="password"
               render={({ field }) => (
-                <FormItem className="flex-1">
+                <FormItem>
                   <FormControl>
-                    <div className="relative flex-1  ">
-                      <FloatingInput
-                        {...field}
-                        type="password"
-                        id="floating-password"
-                        className=" "
-                      />
-                      <FloatingLabel
-                        htmlFor="floating-password"
-                        className="font-normal"
-                      >
-                        Password
-                      </FloatingLabel>
+                    <div className="flex items-center border border-border ">
+                      <div className="relative flex-1  ">
+                        <FloatingInput
+                          {...field}
+                          type={passwordType}
+                          id="floating-password"
+                          className=" border-none"
+                        />
+                        <FloatingLabel
+                          htmlFor="floating-password"
+                          className="font-normal"
+                        >
+                          Password
+                        </FloatingLabel>
+                      </div>
+
+                      <div className="p-2 w-12 relative flex justify-center items-center">
+                        <button onClick={togglePasswordType}>
+                          {passwordType == "text" ? (
+                            <EyeOff className="text-accent w-4 h-4 " />
+                          ) : (
+                            <Eye className="text-accent w-4 h-4 " />
+                          )}
+                        </button>
+
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
+                      </div>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -203,21 +217,35 @@ const RegistationForm = () => {
             <FormField
               name="confirmPassword"
               render={({ field }) => (
-                <FormItem className="flex-1">
+                <FormItem>
                   <FormControl>
-                    <div className="relative flex-1  ">
-                      <FloatingInput
-                        {...field}
-                        type="text"
-                        id="floating-confirmPassword"
-                        className=" "
-                      />
-                      <FloatingLabel
-                        htmlFor="floating-confirmPassword"
-                        className="font-normal"
-                      >
-                        Confirm Password
-                      </FloatingLabel>
+                    <div className="flex items-center border border-border ">
+                      <div className="relative flex-1  ">
+                        <FloatingInput
+                          {...field}
+                          type={confirmPasswordTrype}
+                          id="floating-confirm-password"
+                          className=" border-none"
+                        />
+                        <FloatingLabel
+                          htmlFor="floating-confirm-password"
+                          className="font-normal"
+                        >
+                          Confirm Password
+                        </FloatingLabel>
+                      </div>
+
+                      <div className="p-2 w-12 relative flex justify-center items-center">
+                        <button onClick={toggleConfirmPasswordType}>
+                          {confirmPasswordTrype == "text" ? (
+                            <EyeOff className="text-accent w-4 h-4 " />
+                          ) : (
+                            <Eye className="text-accent w-4 h-4 " />
+                          )}
+                        </button>
+
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
+                      </div>
                     </div>
                   </FormControl>
                   <FormMessage />

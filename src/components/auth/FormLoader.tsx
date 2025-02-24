@@ -1,6 +1,9 @@
 import React from "react";
 import { AuthMethods } from "../types";
 
+import { AiTwotoneMail } from "react-icons/ai";
+import { IoIosPhonePortrait } from "react-icons/io";
+import { TbHandClick } from "react-icons/tb";
 interface FormLoaderProps {
   children: React.ReactNode;
   label: string;
@@ -22,16 +25,13 @@ const FormLoader = ({
 
       <div className=" border border-muted rounded-sm">
         {authMethods && (
-          <div className="w-full flex items-center">
+          <div className="w-full flex items-center auth-method-container">
             {authMethods?.map((m, i) => (
-              <button
+              <AuthMethodsComponent
                 key={i}
-                className={`flex-1 text-primary text-xs px-3 py-1 capitalize bg-[#D7E5F1] ${
-                  m == activeAuthMethod && "bg-primary text-white"
-                } flex-1`}
-              >
-                {m}
-              </button>
+                method={m}
+                activeAuthMethod={activeAuthMethod}
+              />
             ))}
           </div>
         )}
@@ -39,6 +39,36 @@ const FormLoader = ({
         <div className="p-2 md:p-3">{children}</div>
       </div>
     </div>
+  );
+};
+
+interface AuthMethodsComponentProps {
+  method: AuthMethods;
+  activeAuthMethod: AuthMethods;
+}
+
+const AuthMethodsComponent = ({
+  method,
+  activeAuthMethod,
+}: AuthMethodsComponentProps) => {
+  const Icon =
+    method === AuthMethods.BYEMAIL ? (
+      <AiTwotoneMail className="w-4 h-4 " />
+    ) : method === AuthMethods.BYPHONE ? (
+      <IoIosPhonePortrait className="w-4 h-4 " />
+    ) : (
+      <TbHandClick className="w-4 h-4 " />
+    );
+
+  return (
+    <button
+      className={`flex-1 flex gap-1 md:gap-2 text-primary text-xs px-3 py-2 capitalize bg-[#D7E5F1] ${
+        method == activeAuthMethod && "bg-primary text-white"
+      } flex-1`}
+    >
+      {Icon}
+      {method}
+    </button>
   );
 };
 

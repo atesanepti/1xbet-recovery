@@ -34,7 +34,7 @@ const About = () => {
           </h4>
 
           <div className="my-3 md:my-4">
-            <h5 className="text-white text-base md:text-lg uppercase font-semibold mb-2 md:mb-3">
+            <h5 className="text-white text-sm md:text-lg uppercase font-semibold mb-2 md:mb-3">
               🥇1XBET BETTING COMPANY — WHAT WOULD YOU LIKE TO KNOW?
             </h5>
             <p className="text-xs md:text-sm text-white">
@@ -53,7 +53,7 @@ const About = () => {
           </div>
 
           <div className="my-3 md:my-4">
-            <h5 className="text-white text-base md:text-lg uppercase font-semibold mb-2 md:mb-3">
+            <h5 className="text-white text-sm md:text-lg uppercase font-semibold mb-2 md:mb-3">
               💰HOW CAN YOU EARN MONEY WITH 1XBET? PREDICTIONS ON SPORTS EVENTS
             </h5>
             <p className="text-xs md:text-sm text-white">
@@ -70,7 +70,7 @@ const About = () => {
           </div>
 
           <div className="my-3 md:my-4">
-            <h5 className="text-white text-base md:text-lg uppercase font-semibold mb-2 md:mb-3">
+            <h5 className="text-white text-sm md:text-lg uppercase font-semibold mb-2 md:mb-3">
               ⚽WHICH SPORTS AND EVENTS ARE OFFERED FOR BETTING BY 1XBET?
             </h5>
             <p className="text-xs md:text-sm text-white">
@@ -91,7 +91,7 @@ const About = () => {
           </div>
 
           <div className="my-3 md:my-4">
-            <h5 className="text-white text-base md:text-lg uppercase font-semibold mb-2 md:mb-3">
+            <h5 className="text-white text-sm md:text-lg uppercase font-semibold mb-2 md:mb-3">
               🏆WHAT DOES 1XBET BETTING COMPANY GUARANTEE?
             </h5>
             <ul>
@@ -116,7 +116,7 @@ const About = () => {
           </div>
 
           <div className="my-3 md:my-4">
-            <h5 className="text-white text-base md:text-lg uppercase font-semibold mb-2 md:mb-3">
+            <h5 className="text-white text-sm md:text-lg uppercase font-semibold mb-2 md:mb-3">
               🏆1XBET – EVERYTHING YOU NEED FOR VICTORY!
             </h5>
             <p className="text-xs md:text-sm text-white">

@@ -11,7 +11,7 @@ const Registation = () => {
         activeAuthMethod={AuthMethods.BYEMAIL}
         authMethods={[
           AuthMethods.BYEMAIL,
-          AuthMethods.BYNAME,
+          AuthMethods.BYPHONE,
           AuthMethods.ONECLIECK,
         ]}
       >

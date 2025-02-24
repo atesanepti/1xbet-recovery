@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-import logo from "@/../public/assets/images/logo.svg";
+import logo from "@/../public/assets/svg/logo.svg";
 
 import {
   MdSportsBaseball,

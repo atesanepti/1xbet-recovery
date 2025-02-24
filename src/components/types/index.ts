@@ -1,5 +1,5 @@
 export enum AuthMethods {
   ONECLIECK = "one click",
-  BYNAME = "by name",
+  BYPHONE = "by phone",
   BYEMAIL = "by email",
 }

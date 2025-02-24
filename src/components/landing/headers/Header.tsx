@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import logo from "@/../public/assets/images/logo.svg";
+import logo from "@/../public/assets/svg/logo.svg";
 import { Button } from "@/components/ui/button";
 
 import { LogIn, SquarePen } from "lucide-react";
@@ -25,91 +25,141 @@ import { cn } from "@/lib/utils";
 import AuthModal from "@/components/auth/AuthModal";
 import Login from "@/components/auth/Login";
 import Registation from "@/components/auth/Registation";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import QrModal from "../QrModal";
+
 const Header = () => {
   return (
     <header className="w-full  z-[1000] sticky top-0 left-0  flex flex-col items-center justify-between ">
-      <div className="w-full bg-white flex items-center justify-between">
-        <div className="flex items-center ">
-          <Button
-            variant={"primary"}
-            className="border-l border-b border-white hidden md:block"
-          >
-            <RiComputerLine className="w-4 h-4 md:w-5 md:h-5 text-white" />
-          </Button>
-          <Button
-            variant={"primary"}
-            className="border-l border-b border-white hidden md:block"
-          >
-            <IoMdPhonePortrait className="w-4 h-4 md:w-5 md:h-5 text-white" />
-          </Button>
-          <Button
-            variant={"primary"}
-            className="md:border-l border-b border-white"
-          >
-            <FaTelegram className="w-4 h-4 md:w-5 md:h-5 text-white" />
-          </Button>
-          <Button
-            variant={"primary"}
-            className="border-l border-b border-white"
-          >
-            $
-          </Button>
-          <Button
-            variant={"secondary"}
-            className="border-l border-b border-white flex flex-col items-center"
-          >
-            <span className="text-sm md:text-base font-bold text-white -translate-y-2">
-              1200 BDT
-            </span>
-            <span className="text-[10px] md:text-xs text-white font-bold uppercase -translate-y-6 md:-translate-y-5">
-              Main
-            </span>
-          </Button>
-        </div>
-        <div className="flex items-center ">
-          <Button
-            variant={"primary"}
-            className="border-l border-b border-white hidden md:block"
-          >
-            <BsQrCode className="w-4 h-4 md:w-5 md:h-5 text-white" />
-          </Button>
+      <TooltipProvider>
+        <div className="w-full bg-white flex items-center justify-between">
+          <div className="flex items-center ">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={"primary"}
+                  className="border-l border-b border-white hidden md:block"
+                >
+                  <RiComputerLine className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span className="text-base font-medium text-white uppercase">
+                  1xbet Betting app
+                </span>
+                <p className="mt-1 text-xs text-muted">
+                  This app will make pre-match and in-play betting faster and
+                  save mobile data.
+                </p>
+              </TooltipContent>
+            </Tooltip>
 
-          <AuthModal
-            trigger={
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={"primary"}
+                  className="border-l border-b border-white hidden md:block"
+                >
+                  <IoMdPhonePortrait className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span className="text-base font-medium text-white uppercase">
+                  Mobile App
+                </span>
+                <p className="mt-1 text-xs text-muted">
+                  The 1xbet app makes betting easier
+                </p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={"primary"}
+                  className="md:border-l border-b border-white"
+                >
+                  <FaTelegram className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span className="text-base font-medium text-white uppercase">
+                  Telegram
+                </span>
+                <p className="mt-1 text-xs text-muted">Bet On Telegram</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Button
+              variant={"primary"}
+              className="border-l border-b border-white"
+            >
+              $
+            </Button>
+            <Button
+              variant={"secondary"}
+              className="border-l border-b border-white flex flex-col items-center"
+            >
+              <span className="text-sm md:text-base font-bold text-white -translate-y-2">
+                1200 BDT
+              </span>
+              <span className="text-[10px] md:text-xs text-white font-bold uppercase -translate-y-6 md:-translate-y-5">
+                Main
+              </span>
+            </Button>
+          </div>
+          <div className="flex items-center ">
+            <QrModal>
               <Button
                 variant={"primary"}
-                className="border-l border-b border-white"
+                className="border-l border-b border-white hidden md:block"
               >
-                <LogIn className="w-4 h-4 md:w-5 md:h-5" />
-                Login
+                <BsQrCode className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </Button>
-            }
-          >
-            <Login />
-          </AuthModal>
+            </QrModal>
+            <AuthModal
+              trigger={
+                <Button
+                  variant={"primary"}
+                  className="border-l border-b border-white"
+                >
+                  <LogIn className="w-4 h-4 md:w-5 md:h-5" />
+                  Login
+                </Button>
+              }
+            >
+              <Login />
+            </AuthModal>
 
-          <AuthModal
-            trigger={
-              <Button
-                variant={"secondary"}
-                className="border-l border-b border-white"
-              >
-                <SquarePen className="w-4 h-4 md:w-5 md:h-5" />
-                Registration
-              </Button>
-            }
-          >
-            <Registation />
-          </AuthModal>
+            <AuthModal
+              trigger={
+                <Button
+                  variant={"secondary"}
+                  className="border-l border-b border-white"
+                >
+                  <SquarePen className="w-4 h-4 md:w-5 md:h-5" />
+                  Registration
+                </Button>
+              }
+            >
+              <Registation />
+            </AuthModal>
 
-          <Button
-            variant={"primary"}
-            className="border-l border-b border-white"
-          >
-            <IoMdSettings className="w-4 h-4 md:w-5 md:h-5" />
-          </Button>
+            <Button
+              variant={"primary"}
+              className="border-l border-b border-white"
+            >
+              <IoMdSettings className="w-4 h-4 md:w-5 md:h-5" />
+            </Button>
+          </div>
         </div>
-      </div>
+      </TooltipProvider>
       <div className="w-full bg-primary-foreground flex items-center justify-between py-2 px-2 md:px-4 border-b border-b-white">
         <Link href="/">
           <Image

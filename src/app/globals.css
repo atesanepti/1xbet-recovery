@@ -187,3 +187,16 @@
 .carousel-content .carousel-item:not(:first-of-type) {
   padding-left: 4px !important;
 }
+
+.auth-method-container button:not(:first-of-type) {
+  border-left: 1px solid white;
+}
+.bg-qr-modal {
+  background: #1a5684 url("/assets/images/bg-qr-modal.png") no-repeat;
+  background-size: cover;
+}
+
+
+.sponsor-grid a:nth-child(5) {
+  grid-column: span 2;
+}
