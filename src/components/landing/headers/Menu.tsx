@@ -21,8 +21,8 @@ import {
 } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { SquarePen, LogIn } from "lucide-react";
+
+import AuthButtons from "@/components/auth/AuthButtons";
 const Menusm = ({ children }: { children: React.ReactNode }) => {
   const [seletecdMenuItem, setSelectedMenuItem] = useState("");
 
@@ -272,16 +272,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 )}
               </div>
             </nav>
-
-            <div className="flex items-center gap-2 justify-end py-4">
-              <Button className="bg-brand-foreground text-white hover:bg-brand-foreground/90 text-xs">
-                <LogIn className="w-4 h-3 text-white" />
-                Login
-              </Button>
-              <Button className="bg-primary text-white hover:bg-primary/90 text-xs">
-                Registration <SquarePen className="w-4 h-4 text-white" />
-              </Button>
-            </div>
+            <AuthButtons />
           </div>
         </SheetContent>
       </Sheet>

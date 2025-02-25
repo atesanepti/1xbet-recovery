@@ -409,7 +409,7 @@ const footballEvents: FootballEvents[] = [
 
 const SportsPage = () => {
   return (
-    <div className="bg-[#0B2B44] min-h-screen pb-32">
+    <div className="bg-[#0B2B44] min-h-screen pb-24 md:pb-32">
       <Header />
       <main className="container">
         <div className="flex items-center justify-between px-2 py-2 ">

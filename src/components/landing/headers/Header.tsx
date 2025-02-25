@@ -10,7 +10,7 @@ import { BsQrCode } from "react-icons/bs";
 import { RiComputerLine } from "react-icons/ri";
 import { IoMdPhonePortrait, IoMdSettings } from "react-icons/io";
 import { FaTelegram } from "react-icons/fa";
-import { MdMenuOpen } from "react-icons/md";
+import { BiMenuAltRight } from "react-icons/bi";
 import {
   Menubar,
   MenubarContent,
@@ -33,18 +33,19 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import QrModal from "../QrModal";
+import AuthButtons from "@/components/auth/AuthButtons";
 
 const Header = () => {
   return (
     <header className="w-full  z-[1000] sticky top-0 left-0  flex flex-col items-center justify-between ">
       <TooltipProvider>
-        <div className="w-full bg-white flex items-center justify-between">
+        <div className="w-full bg-white hidden md:flex items-center justify-between border-b border-b-border">
           <div className="flex items-center ">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   variant={"primary"}
-                  className="border-l border-b border-white hidden md:block"
+                  className="border-l border-b border-white "
                 >
                   <RiComputerLine className="w-4 h-4 md:w-5 md:h-5 text-white" />
                 </Button>
@@ -64,7 +65,7 @@ const Header = () => {
               <TooltipTrigger asChild>
                 <Button
                   variant={"primary"}
-                  className="border-l border-b border-white hidden md:block"
+                  className="border-l border-b border-white "
                 >
                   <IoMdPhonePortrait className="w-4 h-4 md:w-5 md:h-5 text-white" />
                 </Button>
@@ -118,7 +119,7 @@ const Header = () => {
             <QrModal>
               <Button
                 variant={"primary"}
-                className="border-l border-b border-white hidden md:block"
+                className="border-l border-b border-white "
               >
                 <BsQrCode className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </Button>
@@ -160,7 +161,7 @@ const Header = () => {
           </div>
         </div>
       </TooltipProvider>
-      <div className="w-full bg-primary-foreground flex items-center justify-between py-2 px-2 md:px-4 border-b border-b-white">
+      <div className="w-full bg-white flex items-center justify-between md:py-2 px-2 md:px-4 border-b border-b-white">
         <Link href="/">
           <Image
             src={logo}
@@ -238,10 +239,12 @@ const Header = () => {
             </MenubarMenu>
           </Menubar>
         </nav>
-
-        <div className="md:hidden">
+        <div className="flex md:hidden items-center gap-2">
+          <div className="">
+            <AuthButtons />
+          </div>
           <Menusm>
-            <MdMenuOpen className="w-5 h-5 text-white" />
+            <BiMenuAltRight className="w-5 h-5 text-accent" />
           </Menusm>
         </div>
       </div>

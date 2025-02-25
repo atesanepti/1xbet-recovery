@@ -214,3 +214,9 @@
   color: #23507d !important;
   opacity : 1
 } */
+
+.wallet-bg {
+  background: linear-gradient(#000000e1, #000000e1), url("/assets/images/wallet-bg.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
