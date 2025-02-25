@@ -3,38 +3,15 @@ import React from "react";
 import { IoFootballSharp } from "react-icons/io5";
 import { HiDotsVertical } from "react-icons/hi";
 import Link from "next/link";
-interface FootballOddsCardProps {
-  data: {
-    eventName: string;
-    time: string;
-    teams: {
-      team1: {
-        name: string;
-        flag: string;
-      };
-      team2: {
-        name: string;
-        flag: string;
-      };
-    };
-    score: {
-      team1: string;
-      team2: string;
-    };
-    odds: {
-      team1: number;
-      team2: number;
-      draw: number;
-    };
-
-    redirectPath: string;
-  };
-}
+import { FootballOddsCardProps } from "../types";
 
 const FootballOddsCard = ({ data }: FootballOddsCardProps) => {
   const { eventName, time, teams, score, odds, redirectPath } = data;
   return (
-    <Link href={redirectPath} className="bg-white rounded-md block p-2 md:p-3 shadow-sm">
+    <Link
+      href={redirectPath}
+      className="bg-white rounded-md block p-2 md:p-3 shadow-sm"
+    >
       <div className="flex justify-between items-center border-b border-b-border pb-2">
         <div className="flex items-center gap-2 ">
           <IoFootballSharp className="w-4 h-4 md:w-5 md:h-5 text-accent" />

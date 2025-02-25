@@ -9,7 +9,7 @@ import visa_master_card from "@/../public/assets/images/visa_mastercard.png";
 
 const Footer = () => {
   return (
-    <div className="my-6 md:my-8 bg-secondary-foreground px-5 md:px-8 py-6 md:py-8 shadow-sm">
+    <div className="mt-6 md:mt-8 bg-secondary-foreground px-5 md:px-8 py-6 md:py-8 shadow-sm">
       <div className="flex justify-center my-3 md:my-4">
         <Link href="#">
           <FaTelegram className="w-4 h-4 md:w-5 md:h-5 text-white" />
@@ -35,7 +35,7 @@ const Footer = () => {
         review them carefully before playing.
       </p>
 
-      <div className="my-3 md:my-4 flex justify-center">
+      <div className="my-3 md:my-4 pb-12 flex justify-center">
         <div className="w-6 h-6 md:w-8 md:h-8 rounded-full flex justify-center items-center text-white text-sm border-2 border-white">
           18+
         </div>

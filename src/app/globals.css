@@ -196,10 +196,9 @@
   background-size: cover;
 }
 
-
 @layer components {
   .sponsor-grid a:nth-child(5) {
-   @apply col-span-2 md:col-span-1 
+    @apply col-span-2 md:col-span-1;
   }
 }
 /* swiper slider styles */
@@ -208,5 +207,10 @@
   height: 100%;
 }
 .swiper-pagination-bullet-active {
-     background-color: #377BBB !important ;
+  background-color: #377bbb !important ;
 }
+
+/* .tab-menu:hover .tab-menu-icon {
+  color: #23507d !important;
+  opacity : 1
+} */

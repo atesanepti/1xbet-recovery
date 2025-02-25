@@ -3,32 +3,7 @@ import React from "react";
 import { MdSportsCricket } from "react-icons/md";
 import { HiDotsVertical } from "react-icons/hi";
 import Link from "next/link";
-interface CricketOddsCardProps {
-  data: {
-    eventName: string;
-    format: string;
-    teams: {
-      team1: {
-        name: string;
-        flag: string;
-      };
-      team2: {
-        name: string;
-        flag: string;
-      };
-    };
-    score: {
-      team1: string;
-      team2: string;
-    };
-    odds: {
-      team1: number;
-      team2: number;
-      draw: number;
-    };
-    redirectPath: string;
-  };
-}
+import { CricketOddsCardProps } from "../types";
 
 const CricketOddsCard = ({ data }: CricketOddsCardProps) => {
   const { eventName, format, teams, score, odds, redirectPath } = data;

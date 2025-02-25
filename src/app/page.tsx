@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div className="bg-[#0B2B44] min-h-screen">
       <Header />
-      <div className="container">
+      <main className="container">
         <Hero />
         <CricketSlider />
         <FootballSlider />
@@ -45,7 +45,7 @@ export default function Home() {
         <About />
         <Sponsors />
         <Footer />
-      </div>
+      </main>
       <TabBar />
 
       {!pageLoaded && <SitePreLoader />}
