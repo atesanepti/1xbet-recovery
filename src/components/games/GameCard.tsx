@@ -13,7 +13,7 @@ const GameCard = ({ label, image, redirect }: GameCardProps) => {
   return (
     <Link
       href={redirect}
-      className="shadow-sm block rounded-sm overflow-hidden "
+      className="shadow-sm block  overflow-hidden border border-blue-400/15"
     >
       <Image
         src={image}
@@ -21,7 +21,7 @@ const GameCard = ({ label, image, redirect }: GameCardProps) => {
         className="w-full aspect-video"
         placeholder="blur"
       />
-      <span className="text-sm md:text-sm text-accent bg-[#E9EEF2] px-2 text-center !line-clamp-1 py-1">
+      <span className="text-xs md:text-sm text-white bg-gradient-to-b from-[#1a5684] via-[#24507d] to-[#103958] px-2 text-center !line-clamp-1 py-1">
         {label}
       </span>
     </Link>

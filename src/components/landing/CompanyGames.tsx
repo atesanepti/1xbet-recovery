@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-
+import { IoGameController } from "react-icons/io5";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -17,6 +17,8 @@ import game7 from "@/../public/assets/images/casino/company-games/game-7.webp";
 import game8 from "@/../public/assets/images/casino/company-games/game-8.webp";
 import game9 from "@/../public/assets/images/casino/company-games/game-9.webp";
 import game10 from "@/../public/assets/images/casino/company-games/game-10.webp";
+import Link from "next/link";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const games = [
   {
@@ -64,22 +66,38 @@ const games = [
 
 const CompanyGames = () => {
   return (
-    <div className="my-3 md:my-5 bg-secondary rounded-full px-8 py-3 md:py-5">
-      <Swiper slidesPerView={"auto"} spaceBetween={15} className="mySwiper">
-        {games.map((data, i) => (
-          <SwiperSlide className="max-w-[50px] md:max-w-max " key={i}>
-            <Image
-              src={data.image}
-              alt={data.name}
-              unoptimized
-              className="w-[45px] rounded-full md:w-[60px] mx-auto aspect-square"
-            />
-            <span className="block text-center mt-1 text-white text-xs md:text-sm">
-              {data.name}
-            </span>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="mt-4 md:my-6">
+      <div className="flex items-center justify-between bg-secondary-foreground p-2 md:px-3 ">
+        <div className="flex gap-1 items-center">
+          <IoGameController className="w-4 h-5 md:w-4 md:h-5 text-white" />
+          <h4 className="font-semibold md:font-bold text-xs md:text-sm text-white uppercase">
+            1xbet games
+          </h4>
+        </div>
+        <Link
+          href="#"
+          className="text-sm md:text-base text-white flex items-center gap-1"
+        >
+          <MdKeyboardDoubleArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+        </Link>
+      </div>
+      <div className="p-3">
+        <Swiper slidesPerView={"auto"} spaceBetween={15} className="mySwiper">
+          {games.map((data, i) => (
+            <SwiperSlide className="max-w-max md:max-w-max" key={i}>
+              <Image
+                src={data.image}
+                alt={data.name}
+                unoptimized
+                className="w-[45px] rounded-full md:w-[60px] mx-auto aspect-square"
+              />
+              <span className="block text-center mt-1 text-white text-xs md:text-sm">
+                {data.name}
+              </span>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

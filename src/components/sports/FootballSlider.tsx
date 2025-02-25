@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-
+import { IoFootball } from "react-icons/io5";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -109,20 +109,23 @@ const footballOddsData = [
 
 const FootballSlider = () => {
   return (
-    <div className="my-2 md:my-3 mb-5 md:mb-7  ">
-      <div className="flex items-center justify-between pb-3">
-        <h4 className="font-bold text-sm md:text-base text-white ">
-          Live Football <span className="opacity-50">(720)</span>
-        </h4>
+    <div className="mt-4 md:my-6   ">
+      <div className="flex items-center justify-between bg-secondary-foreground p-2 md:px-3 ">
+        <div className="flex gap-1 items-center">
+          <IoFootball className="w-4 h-5 md:w-4 md:h-5 text-white" />
+          <h4 className="font-semibold md:font-bold text-xs md:text-sm text-white uppercase">
+            Live Football (720)
+          </h4>
+        </div>
         <Link
           href="#"
           className="text-sm md:text-base text-white flex items-center gap-1"
         >
-          More Live <MdKeyboardDoubleArrowRight className="w-4 h-3" />
+          <MdKeyboardDoubleArrowRight className="w-4 h-4 md:w-5 md:h-5" />
         </Link>
       </div>
 
-      <div>
+      <div className="p-3">
         <Swiper slidesPerView={"auto"} spaceBetween={5} className="mySwiper">
           {footballOddsData.map((data, i) => (
             <SwiperSlide className="max-w-[320px] " key={i}>
