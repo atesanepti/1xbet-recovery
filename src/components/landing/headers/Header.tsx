@@ -162,14 +162,19 @@ const Header = () => {
         </div>
       </TooltipProvider>
       <div className="w-full bg-white flex items-center justify-between md:py-2 px-2 md:px-4 border-b border-b-white">
-        <Link href="/">
-          <Image
-            src={logo}
-            alt="1XBet Companl"
-            className="w-[80px] md:w-[100px] "
-          />
-        </Link>
+        <div className="relative">
+          <Link href="/">
+            <Image
+              src={logo}
+              alt="1XBet Companl"
+              className="w-[80px] md:w-[100px] "
+            />
+          </Link>
 
+          <span className="absolute top-0 -right-14 md:-right-16 text-[10px] text-white bg-brand-foreground rounded-sm block w-max text-center px-1 uppercase">
+            Companl
+          </span>
+        </div>
         <nav className="hidden md:block ">
           <Menubar>
             <MenubarMenu>

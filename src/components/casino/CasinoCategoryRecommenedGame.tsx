@@ -32,9 +32,9 @@ const CasinoCategoryRecommenedGame = ({
   );
 
   return (
-    <div className="mb-2 ">
+    <div className="mb-1 ">
       <div className="flex justify-between items-center py-2 px-1">
-        <span className="text-xs md:text-sm text-white font-semibold">
+        <span className="text-xs md:text-sm text-white font-bold md:font-semibold">
           {gameType}
         </span>
         <Link
@@ -45,7 +45,7 @@ const CasinoCategoryRecommenedGame = ({
         </Link>
       </div>
 
-      <div className="md:hidden p-1">
+      <div className="md:hidden px-1">
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={5}

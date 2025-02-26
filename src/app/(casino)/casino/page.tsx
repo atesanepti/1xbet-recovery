@@ -29,12 +29,12 @@ const CasinoPage = () => {
       <main className="container">
         <div className="flex bg-[#213f61] items-center justify-between px-2 py-2 ">
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-brand-foreground"></div>
-            <span className="text-xs md:text-sm text-white">CASINO</span>
+            <div className="w-2 h-2 rounded-full bg-primary"></div>
+            <span className="text-sm font-bold md:font-semibold text-white">CASINO</span>
           </div>
           <div className="flex items-center gap-2">
             <button className="px-2 py-1 cursor-pointer">
-              <IoIosSearch className="text-white w-4 h-4 md:w-5 md:h-5 " />
+              <IoIosSearch className="text-white w-5 md:h-5 " />
             </button>
           </div>
         </div>

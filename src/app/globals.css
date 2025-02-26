@@ -141,7 +141,7 @@
 }
 
 .container {
-  @apply w-[98%] md:w-[90%] lg:w-[85%] mx-auto;
+  @apply w-full md:w-[90%] lg:w-[85%] mx-auto;
 }
 
 /* .scrollbar-min::-webkit-scrollbar {
@@ -216,7 +216,114 @@
 } */
 
 .wallet-bg {
-  background: linear-gradient(#000000e1, #000000e1), url("/assets/images/wallet-bg.jpg") no-repeat;
+  background: linear-gradient(#000000e1, #000000e1),
+    url("/assets/images/wallet-bg.jpg") no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/* pre loader styles */
+.pre-logo__outer,
+.pre-logo__inner,
+.pre-logo__logo {
+  fill-rule: evenodd;
+}
+.pre-logo__outer,
+.pre-logo__inner {
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.pre-logo__outer {
+  fill: #fff;
+  -webkit-animation: preloader-rotate 5s linear infinite;
+  animation: preloader-rotate 5s linear infinite;
+}
+.pre-logo__inner {
+  fill: #aaa;
+  animation: preloader-rotate 3s linear infinite reverse;
+}
+.pre-logo__logo {
+  fill: url(#preloader-gradient);
+}
+.pre-logo__color {
+  stop-color: #fff;
+}
+.pre-logo__color:nth-child(1) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.5s;
+  animation: preloader-gradient 3s linear infinite 0.5s;
+}
+.pre-logo__color:nth-child(2) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.45s;
+  animation: preloader-gradient 3s linear infinite 0.45s;
+}
+.pre-logo__color:nth-child(3) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.4s;
+  animation: preloader-gradient 3s linear infinite 0.4s;
+}
+.pre-logo__color:nth-child(4) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.35s;
+  animation: preloader-gradient 3s linear infinite 0.35s;
+}
+.pre-logo__color:nth-child(5) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.3s;
+  animation: preloader-gradient 3s linear infinite 0.3s;
+}
+.pre-logo__color:nth-child(6) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.25s;
+  animation: preloader-gradient 3s linear infinite 0.25s;
+}
+.pre-logo__color:nth-child(7) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.2s;
+  animation: preloader-gradient 3s linear infinite 0.2s;
+}
+.pre-logo__color:nth-child(8) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.15s;
+  animation: preloader-gradient 3s linear infinite 0.15s;
+}
+.pre-logo__color:nth-child(9) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.1s;
+  animation: preloader-gradient 3s linear infinite 0.1s;
+}
+.pre-logo__color:nth-child(10) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0.05s;
+  animation: preloader-gradient 3s linear infinite 0.05s;
+}
+.pre-logo__color:nth-child(11) {
+  -webkit-animation: preloader-gradient 3s linear infinite 0s;
+  animation: preloader-gradient 3s linear infinite 0s;
+}
+@-webkit-keyframes preloader-gradient {
+  50% {
+    stop-color: #fff;
+  }
+  60% {
+    stop-color: #aaa;
+  }
+  70% {
+    stop-color: #fff;
+  }
+}
+@keyframes preloader-gradient {
+  50% {
+    stop-color: #fff;
+  }
+  60% {
+    stop-color: #aaa;
+  }
+  70% {
+    stop-color: #fff;
+  }
+}
+@-webkit-keyframes preloader-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes preloader-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

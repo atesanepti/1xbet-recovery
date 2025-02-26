@@ -9,7 +9,7 @@ const AccountPage = () => {
     <div className="bg-[#0B2B44] min-h-screen pb-24 md:pb-32">
       <Header />
       <main className="container">
-        <div className="px-2 py-2">
+        <div>
           <Wallet />
           <AccountMenu />
         </div>

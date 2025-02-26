@@ -5,7 +5,7 @@ import React from "react";
 
 const CasinoCategories = () => {
   return (
-    <div className="flex flex-wrap gap-2 py-2 md:py-4 items-center">
+    <div className="flex flex-wrap gap-2 px-1 py-2 md:py-4 items-center mb-2">
       <CasinoCategory label="All" redirect="#" isActive />
       <CasinoCategory label="Casino" redirect="#" isActive={false} />
       <CasinoCategory label="Live Casino" redirect="#" isActive={false} />

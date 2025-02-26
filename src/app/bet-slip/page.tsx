@@ -13,8 +13,8 @@ const BetSlipPage = () => {
         <div className="px-2 py-2">
           <Tabs defaultValue="slip">
             <TabsList>
-              <TabsTrigger value="slip">Account</TabsTrigger>
-              <TabsTrigger value="my">Password</TabsTrigger>
+              <TabsTrigger value="slip" className="rounded-sm">Bet Slip</TabsTrigger>
+              <TabsTrigger value="my" className="rounded-sm">My Bets</TabsTrigger>
             </TabsList>
             <TabsContent value="slip">
               <BetSlip />

@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-import logo from "@/../public/assets/svg/logo.svg";
+import logo from "@/../public/assets/svg/logo2.svg";
 
 import {
   MdSportsBaseball,
@@ -40,14 +40,17 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
         <SheetTrigger>{children}</SheetTrigger>
         <SheetContent side={"left"}>
           <SheetHeader>
-            <SheetTitle>
-              <Link href="/">
+            <SheetTitle className=" relative">
+              <Link href="/" className="max-w-max relative bg-red-500">
                 <Image
                   src={logo}
                   alt="1XBet Companl"
                   className="w-[80px] md:w-[100px] "
                 />
               </Link>
+              <span className="absolute top-0 left-24 text-[10px] text-white bg-brand-foreground rounded-sm  w-max text-center px-1 leading-[14px] uppercase">
+                Companl
+              </span>
             </SheetTitle>
           </SheetHeader>
 
@@ -73,7 +76,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 </button>
 
                 {seletecdMenuItem == "top-event" && (
-                  <ul className="px-2">
+                  <ul className="px-2 list-decimal">
                     <li>
                       <Link
                         href="#"
@@ -114,7 +117,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 </button>
 
                 {seletecdMenuItem == "sports" && (
-                  <ul className="px-2">
+                  <ul className="px-2 list-decimal">
                     <li>
                       <Link
                         href="#"
@@ -153,7 +156,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 </button>
 
                 {seletecdMenuItem == "live" && (
-                  <ul className="px-2">
+                  <ul className="px-2 list-decimal">
                     <li>
                       <Link
                         href="#"
@@ -194,7 +197,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 </button>
 
                 {seletecdMenuItem == "casino" && (
-                  <ul className="px-2">
+                  <ul className="px-2 list-decimal">
                     <li>
                       <Link
                         href="#"

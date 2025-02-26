@@ -12,14 +12,14 @@ import { usePathname } from "next/navigation";
 const TabBar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-white shadow-lg border border-border fixed z-[500000000] left-1/2 -translate-x-1/2 bottom-0 md:bottom-3 w-full md:w-[600px] h-[60px] md:h-[70px] md:rounded-full flex py-1 md:py-2">
+    <div className="bg-white shadow-lg border border-border fixed z-[500000000] left-1/2 -translate-x-1/2 bottom-0 md:bottom-3 w-full md:w-[600px] h-[65px] md:h-[70px] md:rounded-full flex py-1 md:py-2">
       <Link
         href="/"
         className="flex-1 flex justify-center items-center flex-col tab-menu"
       >
         <IoMdHome
           className={cn(
-            "w-4 h-4 text-accent opacity-50",
+            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50",
             `${
               pathname == "/" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
@@ -41,7 +41,7 @@ const TabBar = () => {
       >
         <FaTrophy
           className={cn(
-            "w-4 h-4 text-accent opacity-50 tab-menu-icon",
+            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/sports" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white  "
@@ -63,7 +63,7 @@ const TabBar = () => {
       >
         <MdCasino
           className={cn(
-            "w-4 h-4 text-accent opacity-50 tab-menu-icon",
+            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/casino" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
@@ -80,14 +80,14 @@ const TabBar = () => {
         </span>
       </Link>
       <Link
-        href="/my-bets"
+        href="/bet-slip"
         className="flex-1 flex justify-center items-center flex-col tab-menu"
       >
         <IoTicketSharp
           className={cn(
-            "w-4 h-4 text-accent opacity-50 tab-menu-icon",
+            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
             `${
-              pathname == "/my-bets" &&
+              pathname == "/bet-slip" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
             }`
           )}
@@ -95,7 +95,7 @@ const TabBar = () => {
         <span
           className={cn(
             "text-accent text-sm",
-            `${pathname === "/my-bets" && "font-medium"}`
+            `${pathname === "/bet-slip" && "font-medium"}`
           )}
         >
           Bet slip
@@ -108,9 +108,9 @@ const TabBar = () => {
       >
         <IoMenuSharp
           className={cn(
-            "w-4 h-4 text-accent opacity-50 tab-menu-icon",
+            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
             `${
-              pathname == "/menu" &&
+              pathname == "/account" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
             }`
           )}

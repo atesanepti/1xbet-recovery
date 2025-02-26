@@ -4,10 +4,12 @@ import { Button } from "../ui/button";
 
 const Wallet = () => {
   return (
-    <div className="wallet-bg p-2 h-[170px]">
+    <div className="wallet-bg p-2 h-[170px] md:h-[200px]">
       <span className="text-[10px] font-normal md:text-xs">
         <span className="text-primary uppercase block">Welcome</span>
-        <span className="text-white text-sm">San Bin</span>
+        <span className="text-white text-sm md:text-base font-semibold">
+          San Bin
+        </span>
       </span>
       <div className="my-1 md:my-2 flex items-center justify-between">
         <span className="font-semibold text-primary text-xs md:text-sm">
