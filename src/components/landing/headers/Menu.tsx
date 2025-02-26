@@ -49,7 +49,7 @@ const Menusm = ({ children }: { children: React.ReactNode }) => {
                 />
               </Link>
               <span className="absolute top-0 left-24 text-[10px] text-white bg-brand-foreground rounded-sm  w-max text-center px-1 leading-[14px] uppercase">
-                Companl
+                Company
               </span>
             </SheetTitle>
           </SheetHeader>

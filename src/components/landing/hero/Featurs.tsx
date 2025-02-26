@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
 
@@ -14,7 +15,7 @@ import Link from "next/link";
 import depositSm from "@/../public/assets/images/features/deposit-sm.png";
 import freeBetSm from "@/../public/assets/images/features/free-bet.webp";
 import signupSm from "@/../public/assets/images/features/signup-sm.jpg";
-import Image from "next/image";
+
 
 const data = {
   desktop: [
@@ -28,7 +29,7 @@ const data = {
     },
     {
       image: "/assets/images/features/deposit.jpg",
-      title: "100% bonus on your 1st deposit",
+      title: "100% bonus on 1st deposit",
       description: "Get 10% cashback on the deposit amount as a promo code",
       actionLabel: "Make a deposit",
       action: "#",
@@ -83,26 +84,32 @@ const Featurs = () => {
     <>
       <Carousel
         setApi={setApi}
-        className="!w-full relative h-[250px] md:h-[310px] hidden md:block"
+        className="!w-full relative  "
         ref={carouselRef}
       >
-        <CarouselContent className=" h-full  ">
+        <CarouselContent className=" h-full px-1 md:px-0 ">
           {data.desktop.map((f, i) => (
             <CarouselItem key={i}>
-              <div
-                style={{ background: `url(${f.image})` }}
-                className={cn(
-                  `w-full h-[250px] md:h-[310px]  pl-8 md:pl-14 py-16  bg-no-repeat bg-center bg-cover`
-                )}
-              >
-                <h3 className="text-white uppercase text-lg md:text-3xl font-semibold md:font-bold max-w-[250px] md:max-w-[430px]">
-                  {f.title}
-                </h3>
-                <span className="text-sm text-white my-3">{f.description}</span>
+              <div className={cn(`w-full  `)}>
+                <div className="relative ">
+                  <img
+                    src={f.image}
+                    alt={f.title}
+                    className="w-full aspect-[10/4] object-cover select-none"
+                  />
+                  <div className="absolute top-0 left-0 w-full flex h-full flex-col justify-center items-start p-3 md:p-4">
+                    <h3 className="text-white uppercase text-base md:text-lg lg:text-3xl font-bold max-w-[250px] md:max-w-[430px]">
+                      {f.title}
+                    </h3>
+                    <span className="text-xs md:text-sm text-white my-3 block max-w-[290px] md:max-w-[320px] lg-max-w-[400px]">
+                      {f.description}
+                    </span>
 
-                <Button variant={"ghost"} className="mt-5">
-                  <Link href={f.action}>{f.actionLabel}</Link>
-                </Button>
+                    <Button variant={"ghost"} className="mt-5">
+                      <Link href={f.action}>{f.actionLabel}</Link>
+                    </Button>
+                  </div>
+                </div>
               </div>
             </CarouselItem>
           ))}
@@ -121,7 +128,8 @@ const Featurs = () => {
           ))}
         </div>
       </Carousel>
-      <Carousel className="block md:hidden">
+
+      {/* <Carousel className="block md:hidden">
         <CarouselContent className="flex md:hidden  carousel-content items-stretch">
           {data.phone.map((f, i) => (
             <CarouselItem
@@ -145,7 +153,7 @@ const Featurs = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-      </Carousel>
+      </Carousel> */}
     </>
   );
 };

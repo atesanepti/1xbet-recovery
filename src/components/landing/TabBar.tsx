@@ -19,7 +19,7 @@ const TabBar = () => {
       >
         <IoMdHome
           className={cn(
-            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50",
+            "w-6 h-6 text-accent opacity-50",
             `${
               pathname == "/" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
@@ -41,7 +41,7 @@ const TabBar = () => {
       >
         <FaTrophy
           className={cn(
-            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
+            "w-6 h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/sports" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white  "
@@ -63,7 +63,7 @@ const TabBar = () => {
       >
         <MdCasino
           className={cn(
-            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
+            "w-6 h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/casino" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
@@ -85,7 +85,7 @@ const TabBar = () => {
       >
         <IoTicketSharp
           className={cn(
-            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
+            "w-6 h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/bet-slip" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "
@@ -108,7 +108,7 @@ const TabBar = () => {
       >
         <IoMenuSharp
           className={cn(
-            "w-5 h-5 md:w-6 md:h-6 text-accent opacity-50 tab-menu-icon",
+            "w-6 h-6 text-accent opacity-50 tab-menu-icon",
             `${
               pathname == "/account" &&
               "bg-brand rounded-full w-6 h-6 opacity-100 text-white p-1 hover:text-white transtion  "

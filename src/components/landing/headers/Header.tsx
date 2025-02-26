@@ -171,8 +171,8 @@ const Header = () => {
             />
           </Link>
 
-          <span className="absolute top-0 -right-14 md:-right-16 text-[10px] text-white bg-brand-foreground rounded-sm block w-max text-center px-1 uppercase">
-            Companl
+          <span className="absolute top-0 -right-16 text-[10px] text-white bg-brand-foreground rounded-sm block w-max text-center px-1 uppercase">
+            Company
           </span>
         </div>
         <nav className="hidden md:block ">
