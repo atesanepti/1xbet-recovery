@@ -327,3 +327,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* profile styles */
+.profile-info .profile-info-item:nth-child(odd) {
+  background: #d0dae1;
+}
+
+.profile-info .profile-info-item:nth-child(even) {
+  background: #fff;
+}

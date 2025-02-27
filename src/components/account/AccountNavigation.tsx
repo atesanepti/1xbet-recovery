@@ -1,32 +1,33 @@
-"use client";
 import React from "react";
-
-import { FaUserCircle } from "react-icons/fa";
-import { MdSecurity, MdOutlineHistory } from "react-icons/md";
-import { PiHandDepositBold, PiHandWithdrawFill } from "react-icons/pi";
-import { GrTransaction } from "react-icons/gr";
+import Wallet from "./Wallet";
 import { IoIosLogOut } from "react-icons/io";
+import { GrTransaction } from "react-icons/gr";
+import { PiHandDepositBold, PiHandWithdrawFill } from "react-icons/pi";
+import { MdOutlineHistory, MdSecurity } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
 
 import AccountMenuItem from "./AccountMenuItem";
-const AccountMenu = () => {
+
+const AccountNavigation = () => {
   return (
-    <div className="p-1 md:p-2">
-      <ul>
+    <div className="flex flex-col min-h-screen h-screen">
+      <Wallet />
+      <ul className="bg-[#113455] flex-1 py-3 px-2">
         <AccountMenuItem
           lable="Personal profile"
-          href="#"
+          href="/account/profile"
           icon={<FaUserCircle className="w-5 md:h-5 text-white" />}
         />
 
         <AccountMenuItem
           lable="security"
-          href="#"
+          href="/account/security"
           icon={<MdSecurity className="w-5 h-5 text-white" />}
         />
 
         <AccountMenuItem
           lable="bet history"
-          href="#"
+          href="/account/bet-history"
           icon={<MdOutlineHistory className="w-5 h-5 text-white" />}
         />
 
@@ -58,4 +59,4 @@ const AccountMenu = () => {
   );
 };
 
-export default AccountMenu;
+export default AccountNavigation;

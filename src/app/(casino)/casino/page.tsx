@@ -34,7 +34,7 @@ const CasinoPage = () => {
           </div>
           <div className="flex items-center gap-2">
             <button className="px-2 py-1 cursor-pointer">
-              <IoIosSearch className="text-white w-5 md:h-5 " />
+              <IoIosSearch className="text-white w-5 h-5 " />
             </button>
           </div>
         </div>
