@@ -336,3 +336,40 @@
 .profile-info .profile-info-item:nth-child(even) {
   background: #fff;
 }
+
+.wallet-image:hover {
+  animation: pop 1s ease ;
+}
+@keyframes pop {
+  0% {
+    scale: 1;
+  }
+   50% {
+    scale: 0.7;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.payment-nav .payment-menu {
+  border-left: 2px solid #d0dae1;
+  border-right: 2px solid #d0dae1;
+  border-top: 2px solid #d0dae1;
+}
+.payment-nav .payment-menu:last-of-type {
+  border-bottom: 2px solid #d0dae1;
+}
+
+.slider-animation {
+  animation: slide 300ms ease-out;
+
+}
+@keyframes slide {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

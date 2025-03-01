@@ -1,10 +1,12 @@
 import React from "react";
-import PaymentMethodFilterMenu from "./PaymentMethodFilterMenu";
+import PaymentMethods from "./PaymentMethods";
+import PaymentMethodNav from "./PaymentMenuNav";
 
 const Payment = () => {
   return (
-    <div className="py-2 grid grid-cols-[20%,_80%] gap-3">
-      <PaymentMethodFilterMenu />
+    <div className="py-2 grid grid-cols-1 md:grid-cols-[20%,_80%] gap-3">
+      <PaymentMethodNav />
+      <PaymentMethods />
     </div>
   );
 };

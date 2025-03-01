@@ -1,10 +1,7 @@
 "use client";
-import About from "@/components/landing/about/About";
-import SiteContent from "@/components/landing/content/SiteContent";
 import Footer from "@/components/landing/footer/Footer";
 import Header from "@/components/landing/headers/Header";
 import Hero from "@/components/landing/hero/Hero";
-import Sponsors from "@/components/landing/sponsors/Sponsors";
 import TabBar from "./../components/landing/TabBar";
 import SitePreLoader from "@/components/loaders/SitePreLoader";
 import { useEffect, useState } from "react";
@@ -35,15 +32,9 @@ export default function Home() {
         <Hero />
         <CricketSlider />
         <FootballSlider />
-
         <CompanyGames />
-
         <Casino />
         <Live />
-
-        <SiteContent />
-        <About />
-        <Sponsors />
         <Footer />
       </main>
       <TabBar />

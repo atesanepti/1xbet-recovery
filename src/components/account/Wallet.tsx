@@ -21,10 +21,16 @@ const Wallet = () => {
       </div>
 
       <div className="mt-3 md:my-4 mb-2 md:mb-3">
-        <Button className="bg-[#7daa2fbe] hover:bg-[#7daa2fbe]/90  text-white uppercase mb-2 w-full block ">
+        <Button
+          size={"sm"}
+          className="bg-[#7daa2fbe] hover:bg-[#7daa2fbe]/90  text-white uppercase mb-2 w-full block "
+        >
           deposit
         </Button>
-        <Button className="bg-[#7daa2fbe] hover:bg-[#7daa2fbe]/90 text-white uppercase mb-2  w-full block">
+        <Button
+          size={"sm"}
+          className="bg-[#7daa2fbe] hover:bg-[#7daa2fbe]/90 text-white uppercase mb-2  w-full block"
+        >
           Withdraw
         </Button>
       </div>

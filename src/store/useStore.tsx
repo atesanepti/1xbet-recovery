@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { PaymentMethod } from "./types";
 
 export const useUpdatePageNavigation = create<{
   page: string;
@@ -8,28 +9,30 @@ export const useUpdatePageNavigation = create<{
   setPage: (page) => set((state) => ({ ...state, page })),
 }));
 
-interface PaymentMethod {
-  method: string;
-  image: string;
-  deposit?: {
-    wallet: string;
-    minimumDeposit: number;
-    depositRange?: Array<number>;
-    maximumDeposit: number;
-    isRecommended: boolean;
-  };
-  isActive: boolean;
-}
-
 export const usePaymentMethods = create<{
-  methodName: string;
+  allMethods: PaymentMethod[];
   methods: PaymentMethod[];
-
-  setMethods: (methodName: string, methods: PaymentMethod[]) => void;
+  currentMethod: string;
+  setAllMethods: (methods: PaymentMethod[]) => void;
+  setMethod: (methodName: string) => void;
 }>((set) => ({
-  methodName: "",
+  allMethods: [],
   methods: [],
+  currentMethod: "",
+  setAllMethods: (methods) =>
+    set((state) => ({
+      ...state,
+      allMethods: methods,
+      currentMethod: "all methods",
+    })),
+  setMethod: (methodName) =>
+    set((state) => {
+      if (methodName == "all methods") {
+        return { ...state, methods: [], currentMethod: methodName };
+      }
+      const method = state.allMethods.find((m) => m.methodName == methodName);
 
-  setMethods: (methodName, methods) =>
-    set((state) => ({ ...state, methodName, methods })),
+      return { ...state, currentMethod: methodName, methods: [method!] };
+    }),
 }));
+

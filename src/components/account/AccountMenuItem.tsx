@@ -16,12 +16,12 @@ const AccountMenuItem = ({ icon, lable, href }: AccountMenuItemProps) => {
   return (
     <li
       className={cn(
-        "flex items-center justify-between px-1 py-2  hover:bg-[#183E5D] transition-all cursor-pointer",
+        "flex items-center  px-1 py-2  hover:bg-[#183E5D] border-l-2 border-l-transparent hover:border-l-primary transition-all cursor-pointer",
         `${isActive && "bg-[#183E5D]"}`
       )}
     >
-      <Link href={href}>
-        <div className="flex gap-3 items-center">
+      <Link href={href} className="flex items-center justify-between w-full">
+        <div className="flex gap-3 items-center ">
           {icon}
           <span className="text-sm md:text-xs font-semibold md:font-medium text-white uppercase">
             {lable}

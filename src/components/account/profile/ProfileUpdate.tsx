@@ -60,7 +60,7 @@ const ProfileUpdate = () => {
         <MdKeyboardArrowDown className="w-6 h-6 text-white/50 pr-2" />
       </div>
 
-      <Button className="bg-brand w-full" onClick={() => setPage("")}>
+      <Button className="bg-brand w-full text-white" onClick={() => setPage("")}>
         Cancel
       </Button>
     </div>

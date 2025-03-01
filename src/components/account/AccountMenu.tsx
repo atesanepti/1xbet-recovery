@@ -14,13 +14,13 @@ const AccountMenu = () => {
       <ul>
         <AccountMenuItem
           lable="Personal profile"
-          href="#"
+          href="/account/profile"
           icon={<FaUserCircle className="w-5 md:h-5 text-white" />}
         />
 
         <AccountMenuItem
           lable="security"
-          href="#"
+          href="/account/security"
           icon={<MdSecurity className="w-5 h-5 text-white" />}
         />
 

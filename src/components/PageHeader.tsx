@@ -8,7 +8,7 @@ const PageHeader = ({ label }: { label: string }) => {
     router.back();
   };
   return (
-    <div className="flex md:hidden items-center  gap-2 bg-[#213f61]">
+    <div className="flex md:hidden items-center pb-3 h-[60px] gap-2 bg-[#213f61]">
       <button
         className="p-2 bg-[#c2d5e3] text-primary-foreground"
         onClick={handleBack}
