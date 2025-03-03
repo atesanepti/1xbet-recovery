@@ -2,7 +2,9 @@ import React from "react";
 import ProfileInfoItem from "./ProfileInfoItem";
 import { FaLock, FaPencilAlt } from "react-icons/fa";
 import ProfileMenuContextWapper from "./ProfileMenuContextWapper";
-
+import { findCurrentUser } from "@/data/user";
+import { countryNameFinder } from "@/lib/helpers";
+import moment from "moment";
 interface ProfileInfoItemProps {
   label: string;
   value: string;
@@ -37,10 +39,12 @@ const ProfileInfoItemLg = ({
   );
 };
 
-const ProfileInfo = () => {
+const ProfileInfo = async () => {
+  const user = await findCurrentUser();
+
   return (
-    <div className="">
-      <div className="hidden md:block bg-white px-4 py-2 my-5">
+    <div className="px-0 md:px-3">
+      <div className="hidden md:block bg-white px-4  py-2 my-5">
         <div className="py-3">
           <h4 className="text-secondary-foreground font-3xl font-semibold uppercase">
             Personal profile
@@ -59,7 +63,7 @@ const ProfileInfo = () => {
             </div>
             <ProfileInfoItemLg
               label="Account number"
-              value="541818217"
+              value={user!.playerId}
               editable={false}
             />
             <ProfileInfoItemLg
@@ -70,22 +74,19 @@ const ProfileInfo = () => {
             />
             <ProfileInfoItemLg
               label="Registration date"
-              value="16/01/2023
-"
+              value={moment(user!.createdAt).format("l")}
               editable={false}
             />
             <ProfileInfoItemLg
               label="Full Name"
-              value="San Bin Hoque
-"
+              value={user!.firstName + user!.lastName}
               type="name"
               editable={true}
             />
 
             <ProfileInfoItemLg
               label="Country"
-              value="Bangladesh
-"
+              value={countryNameFinder(user!.wallet!.currencyCode)!}
               editable={false}
             />
           </div>
@@ -97,20 +98,20 @@ const ProfileInfo = () => {
             </div>
             <ProfileInfoItemLg
               label="Phone"
-              value="01735156550"
+              value={user!.phone}
               editable={true}
               type="phone"
             />
 
             <ProfileInfoItemLg
               label="Email"
-              value="epti060@gmail.com
-"
+              value={user!.email}
               editable={false}
             />
           </div>
         </div>
       </div>
+
       <div className="block md:hidden pt-2 pb-5 bg-[#213f61]">
         <ul className="flex flex-col gap-3">
           <ProfileInfoItem label="Account Number" value="505046728" />

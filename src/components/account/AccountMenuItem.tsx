@@ -17,7 +17,7 @@ const AccountMenuItem = ({ icon, lable, href }: AccountMenuItemProps) => {
     <li
       className={cn(
         "flex items-center  px-1 py-2  hover:bg-[#183E5D] border-l-2 border-l-transparent hover:border-l-primary transition-all cursor-pointer",
-        `${isActive && "bg-[#183E5D]"}`
+        `${isActive && "bg-[#183E5D] border-l-primary"}`
       )}
     >
       <Link href={href} className="flex items-center justify-between w-full">

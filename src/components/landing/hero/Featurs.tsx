@@ -16,7 +16,6 @@ import depositSm from "@/../public/assets/images/features/deposit-sm.png";
 import freeBetSm from "@/../public/assets/images/features/free-bet.webp";
 import signupSm from "@/../public/assets/images/features/signup-sm.jpg";
 
-
 const data = {
   desktop: [
     {
@@ -87,7 +86,7 @@ const Featurs = () => {
         className="!w-full relative  "
         ref={carouselRef}
       >
-        <CarouselContent className=" h-full px-1 md:px-0 ">
+        <CarouselContent className=" h-full  ">
           {data.desktop.map((f, i) => (
             <CarouselItem key={i}>
               <div className={cn(`w-full  `)}>

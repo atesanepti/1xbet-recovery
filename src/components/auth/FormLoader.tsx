@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import { AuthMethods } from "../types";
 
 import { AiTwotoneMail } from "react-icons/ai";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { TbHandClick } from "react-icons/tb";
+import SweetToast from "../ui/SweetToast";
 interface FormLoaderProps {
   children: React.ReactNode;
   label: string;
@@ -60,8 +62,19 @@ const AuthMethodsComponent = ({
       <TbHandClick className="w-4 h-4 " />
     );
 
+  const handleClick = () => {
+    if (method !== AuthMethods.BYEMAIL) {
+      SweetToast.fire({
+        title: "Warning",
+        text: "This method is not avilable now! Use Email",
+        icon: "warning",
+      });
+    }
+  };
+
   return (
     <button
+      onClick={handleClick}
       className={`flex-1 flex gap-1 md:gap-2 text-primary text-xs px-3 py-2 capitalize bg-[#D7E5F1] ${
         method == activeAuthMethod && "bg-primary text-white"
       } flex-1`}

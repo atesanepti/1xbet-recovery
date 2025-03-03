@@ -3,7 +3,6 @@ import ProfileInfo from "@/components/account/profile/ProfileInfo";
 import ProfileUpdate from "@/components/account/profile/ProfileUpdate";
 import ProfileUpdateButton from "@/components/account/profile/ProfileUpdateButton";
 
-
 import PageHeader from "@/components/PageHeader";
 import { useUpdatePageNavigation } from "@/store/useStore";
 import React from "react";
@@ -30,8 +29,6 @@ const ProfilePage = () => {
           </div>
         </main>
       )}
-
-      
     </div>
   );
 };

@@ -34,11 +34,8 @@ model Users {
   password            String
   isBanned            Boolean @default(false)
   isNewUser           Boolean @default(true)
+  createdAt           DateTime @default(now())
   getBouns            Boolean @default(false)         
-  referenceType       UserReference @default(ADMIN)
-  referrerId          String @unique
-  referrer            Users? @relation("PlayerReferrer",fields: [referrerId], references: [id])   
-  reference           Users? @relation("PlayerReferrer")
   wallet              wallet?
   @@unique([email,playerId])
 }

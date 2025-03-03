@@ -32,7 +32,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="w-full  md:max-h-[280px] md:h-[280px]">
+      <div className="w-full ">
         <Featurs />
       </div>
     </div>

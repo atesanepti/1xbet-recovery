@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 import {
   Form,
@@ -14,9 +14,28 @@ import { Button } from "../ui/button";
 import SocialMediaLogin from "./SocialMediaLogin";
 import InputCommand from "../ui/command-input";
 import { Eye, EyeOff } from "lucide-react";
+import zod from "zod";
+import { registerSchema } from "@/schema";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import SweetToast from "../ui/SweetToast";
+import { register } from "@/action/register";
+import RequestLoader from "../loaders/RequestLoader";
 
 const RegistationForm = () => {
-  const form = useForm();
+  const [pending, startTransition] = useTransition();
+  const form = useForm<zod.infer<typeof registerSchema>>({
+    defaultValues: {
+      email: "",
+      phone: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      confirmPassword: "",
+      currencyCode: "BDT",
+    },
+    resolver: zodResolver(registerSchema),
+  });
 
   const [passwordType, setPasswordType] = useState<"text" | "password">(
     "password"
@@ -26,8 +45,28 @@ const RegistationForm = () => {
     "text" | "password"
   >("password");
 
-  const handleRegistation = () => {
-    // TODO : handle login api call
+  const handleRegistation = (data: zod.infer<typeof registerSchema>) => {
+    startTransition(() => {
+      register(data).then((res) => {
+        if (res.success) {
+          SweetToast.fire({
+            icon: "success",
+            title: res.success,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else if (res.error) {
+          SweetToast.fire({
+            icon: "error",
+            title: res.error,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+    });
+
+    console.log({ data });
   };
 
   const togglePasswordType = () => {
@@ -40,7 +79,7 @@ const RegistationForm = () => {
   const toggleConfirmPasswordType = () => {
     if (confirmPasswordTrype == "text") {
       setConfirmPasswordType("password");
-    } else if (passwordType == "password") {
+    } else if (confirmPasswordTrype == "password") {
       setConfirmPasswordType("text");
     }
   };
@@ -51,10 +90,12 @@ const RegistationForm = () => {
         <form onSubmit={form.handleSubmit(handleRegistation)}>
           <FormField
             name="currencyCode"
-            render={({}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <InputCommand
+                    currentValue={field.value}
+                    disabled={pending}
                     onChange={(value) => form.setValue("currencyCode", value)}
                   />
                 </FormControl>
@@ -79,6 +120,7 @@ const RegistationForm = () => {
                         {...field}
                         type="email"
                         id="floating-email"
+                        disabled={pending}
                         className=" "
                       />
                       <FloatingLabel
@@ -95,7 +137,7 @@ const RegistationForm = () => {
               control={form.control}
             />
             <FormField
-              name="Phone"
+              name="phone"
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
@@ -103,6 +145,7 @@ const RegistationForm = () => {
                       <FloatingInput
                         {...field}
                         type="text"
+                        disabled={pending}
                         id="floating-phone"
                         className=" "
                       />
@@ -131,6 +174,7 @@ const RegistationForm = () => {
                       <FloatingInput
                         {...field}
                         type="text"
+                        disabled={pending}
                         id="floating-firstName"
                         className=" "
                       />
@@ -156,6 +200,7 @@ const RegistationForm = () => {
                       <FloatingInput
                         {...field}
                         type="text"
+                        disabled={pending}
                         id="floating-lastName"
                         className=" "
                       />
@@ -185,6 +230,7 @@ const RegistationForm = () => {
                         <FloatingInput
                           {...field}
                           type={passwordType}
+                          disabled={pending}
                           id="floating-password"
                           className=" border-none"
                         />
@@ -197,7 +243,7 @@ const RegistationForm = () => {
                       </div>
 
                       <div className="p-2 w-12 relative flex justify-center items-center">
-                        <button onClick={togglePasswordType}>
+                        <button type="button" onClick={togglePasswordType}>
                           {passwordType == "text" ? (
                             <EyeOff className="text-accent w-4 h-4 " />
                           ) : (
@@ -226,6 +272,7 @@ const RegistationForm = () => {
                           type={confirmPasswordTrype}
                           id="floating-confirm-password"
                           className=" border-none"
+                          disabled={pending}
                         />
                         <FloatingLabel
                           htmlFor="floating-confirm-password"
@@ -236,7 +283,10 @@ const RegistationForm = () => {
                       </div>
 
                       <div className="p-2 w-12 relative flex justify-center items-center">
-                        <button onClick={toggleConfirmPasswordType}>
+                        <button
+                          type="button"
+                          onClick={toggleConfirmPasswordType}
+                        >
                           {confirmPasswordTrype == "text" ? (
                             <EyeOff className="text-accent w-4 h-4 " />
                           ) : (
@@ -261,7 +311,7 @@ const RegistationForm = () => {
 
           <div className="flex items-center gap-2">
             <FormField
-              name="promo"
+              name="referCode"
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
@@ -270,6 +320,7 @@ const RegistationForm = () => {
                         {...field}
                         type="text"
                         id="floating-promo"
+                        disabled={pending}
                         className=" "
                       />
                       <FloatingLabel
@@ -286,9 +337,13 @@ const RegistationForm = () => {
               control={form.control}
             />
             <div className="flex-1">
-              <Button className="!w-full !h-9" variant={"ghost"}>
-                Registation
-              </Button>
+              {pending ? (
+                <RequestLoader />
+              ) : (
+                <Button className="!w-full !h-9" variant={"ghost"}>
+                  Registation
+                </Button>
+              )}
             </div>
           </div>
         </form>

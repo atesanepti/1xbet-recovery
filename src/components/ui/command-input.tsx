@@ -15,25 +15,19 @@ import {
 import { Check, ChevronsUpDown } from "lucide-react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import { currencies } from "@/data/currency";
 
-const InputCommand = ({ onChange }: { onChange: (value: string) => void }) => {
+const InputCommand = ({
+  onChange,
+  disabled,
+  currentValue,
+}: {
+  onChange: (value: string) => void;
+  disabled: boolean;
+  currentValue: string;
+}) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-
-  const currencies = [
-    { currency: "BDT", country: "Bangladesh", full: "BDT (Bangladesh)" },
-    { currency: "INR", country: "India", full: "INR (India)" },
-    { currency: "PKR", country: "Pakistan", full: "PKR (Pakistan)" },
-    { currency: "LKR", country: "Sri Lanka", full: "LKR (Sri Lanka)" },
-    { currency: "NPR", country: "Nepal", full: "NPR (Nepal)" },
-    { currency: "AFN", country: "Afghanistan", full: "AFN (Afghanistan)" },
-    { currency: "MMK", country: "Myanmar", full: "MMK (Myanmar)" },
-    { currency: "BND", country: "Brunei", full: "BND (Brunei)" },
-    { currency: "SGD", country: "Singapore", full: "SGD (Singapore)" },
-    { currency: "MYR", country: "Malaysia", full: "MYR (Malaysia)" },
-    { currency: "USD", country: "United States", full: "USD (United States)" },
-    { currency: "EUR", country: "Eurozone", full: "EUR (Eurozone)" },
-  ];
 
   useEffect(() => {
     if (value) {
@@ -41,10 +35,15 @@ const InputCommand = ({ onChange }: { onChange: (value: string) => void }) => {
     }
   }, [value, onChange]);
 
+  useEffect(() => {
+    setValue(currentValue);
+  }, [currentValue]);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          disabled={disabled}
           role="combobox"
           aria-expanded={open}
           className="w-full bg-transparent justify-between border !border-border text-accent capitalize font-medium  hover:bg-transparent"

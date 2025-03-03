@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,6 +10,7 @@ import { LogIn, SquarePen } from "lucide-react";
 import { BsQrCode } from "react-icons/bs";
 import { RiComputerLine } from "react-icons/ri";
 import { IoMdPhonePortrait, IoMdSettings } from "react-icons/io";
+
 import { FaTelegram } from "react-icons/fa";
 import { BiMenuAltRight } from "react-icons/bi";
 import {
@@ -20,12 +22,13 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
 import Menusm from "./Menu";
 import { cn } from "@/lib/utils";
 import AuthModal from "@/components/auth/AuthModal";
 import Login from "@/components/auth/Login";
 import Registation from "@/components/auth/Registation";
-
+import useCurrentUser from "@/hook/useCurrentUser";
 import {
   Tooltip,
   TooltipContent,
@@ -36,6 +39,7 @@ import QrModal from "../QrModal";
 import AuthButtons from "@/components/auth/AuthButtons";
 
 const Header = () => {
+  const user = useCurrentUser();
   return (
     <header className="w-full  z-[1000] sticky top-0 left-0  flex flex-col items-center justify-between ">
       <TooltipProvider>
@@ -108,7 +112,7 @@ const Header = () => {
               className="border-l border-b border-white flex flex-col items-center"
             >
               <span className="text-sm md:text-base font-bold text-white -translate-y-2">
-                1200 BDT
+                {user ? user.wallet?.balance.toString() : 0}
               </span>
               <span className="text-[10px] md:text-xs text-white font-bold uppercase -translate-y-6 md:-translate-y-5">
                 Main
@@ -124,33 +128,53 @@ const Header = () => {
                 <BsQrCode className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </Button>
             </QrModal>
-            <AuthModal
-              trigger={
-                <Button
-                  variant={"primary"}
-                  className="border-l border-b border-white"
-                >
-                  <LogIn className="w-4 h-4 md:w-5 md:h-5" />
-                  Login
-                </Button>
-              }
-            >
-              <Login />
-            </AuthModal>
 
-            <AuthModal
-              trigger={
-                <Button
-                  variant={"secondary"}
-                  className="border-l border-b border-white"
-                >
-                  <SquarePen className="w-4 h-4 md:w-5 md:h-5" />
-                  Registration
-                </Button>
-              }
-            >
-              <Registation />
-            </AuthModal>
+            {!user && (
+              <AuthModal
+                trigger={
+                  <Button
+                    variant={"primary"}
+                    className="border-l border-b border-white"
+                  >
+                    <LogIn className="w-4 h-4 md:w-5 md:h-5" />
+                    Login
+                  </Button>
+                }
+              >
+                <Login />
+              </AuthModal>
+            )}
+
+            {!user && (
+              <AuthModal
+                trigger={
+                  <Button
+                    variant={"secondary"}
+                    className="border-l border-b border-white"
+                  >
+                    <SquarePen className="w-4 h-4 md:w-5 md:h-5" />
+                    Registration
+                  </Button>
+                }
+              >
+                <Registation />
+              </AuthModal>
+            )}
+
+            {user && (
+              <Button variant={"secondary"} className="border-l border-b">
+                $ Deposit
+              </Button>
+            )}
+
+            {user && (
+              <Button
+                variant={"primary"}
+                className="inner-shadow bg-[#0e5d9a] border-l border-b"
+              >
+                <FaUser className="w-4 h-4 " /> My Account
+              </Button>
+            )}
 
             <Button
               variant={"primary"}
@@ -161,7 +185,8 @@ const Header = () => {
           </div>
         </div>
       </TooltipProvider>
-      <div className="w-full bg-white flex items-center justify-between md:py-2 px-2 md:px-4 border-b border-b-white">
+
+      <div className="w-full bg-gradient-to-b from-white to-[#dbe5ed] flex items-center justify-between md:py-2 px-2 md:px-4 border-b border-b-white">
         <div className="relative">
           <Link href="/">
             <Image
@@ -175,6 +200,7 @@ const Header = () => {
             Company
           </span>
         </div>
+
         <nav className="hidden md:block ">
           <Menubar>
             <MenubarMenu>
@@ -244,10 +270,23 @@ const Header = () => {
             </MenubarMenu>
           </Menubar>
         </nav>
+
         <div className="flex md:hidden items-center gap-2">
           <div className="">
             <AuthButtons />
           </div>
+
+          {user && (
+            <div className="flex items-center gap-2">
+              <Button className="bg-brand-foreground hover:bg-brand-foreground/90 text-white">
+                <Link href="/account/deposit">Deposit</Link>
+              </Button>
+              <button>
+                <FaUser className="w-4 h-4 text-accent" />
+              </button>
+            </div>
+          )}
+
           <Menusm>
             <BiMenuAltRight className="w-5 h-5 text-accent" />
           </Menusm>

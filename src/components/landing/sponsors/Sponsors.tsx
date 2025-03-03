@@ -1,6 +1,10 @@
 import React from "react";
-
 import Image from "next/image";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 import laliga from "@/../public/assets/images/sponsors/sports/laliga.png";
 import psg from "@/../public/assets/images/sponsors/sports/paris-saint-germain.png";
@@ -81,45 +85,63 @@ const Sponsors = () => {
         <h4 className="text-white text-base md:text-lg font-bold text-center my-3">
           Our Sports Sponsors
         </h4>
-        <div className="grid sponsor-grid a gap-2 md:gap-3 grid-cols-[repeat(3,_minmax(0,1fr))] md:grid-cols-[repeat(5,_minmax(0,1fr))]  items-start justify-center">
+        <Swiper
+          slidesPerView={"auto"}
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
           {sponsors.sports.map((s, i) => (
-            <Link
-              key={i}
-              href={s.redirect}
-              className="bg-secondary h-[60px] py-1  rounded-md flex items-center"
-              title={s.name}
-            >
-              <Image
-                className="w-[35px] md:w-[50px] object-cover mx-auto"
-                src={s.image}
-                placeholder="blur"
-                alt={s.name}
-              />
-            </Link>
+            <SwiperSlide key={i} className="pb-8 max-w-[25%] md:max-w-[250px]">
+              <Link
+                href={s.redirect}
+                className="bg-secondary h-[60px] py-1  rounded-md flex items-center"
+                title={s.name}
+              >
+                <Image
+                  className="w-[35px] md:w-[50px] object-cover mx-auto"
+                  src={s.image}
+                  placeholder="blur"
+                  alt={s.name}
+                />
+              </Link>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
 
       <div className="flex flex-col justify-center">
         <h4 className="text-white text-base md:text-lg font-bold text-center my-3">
           Our E- Sports Sponsors
         </h4>
-        <div className="grid sponsor-grid gap-2 md:gap-3 grid-cols-[repeat(3,_minmax(0,1fr))] md:grid-cols-[repeat(5,_minmax(0,1fr))]  items-start justify-center">
+        <Swiper
+          slidesPerView={"auto"}
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
           {sponsors.esports.map((s, i) => (
-            <Link
-              href={s.redirect}
-              key={i}
-              title={s.name}
-              className="bg-secondary h-[60px] py-1  rounded-md flex items-center"
-            >
-              <Image
-                className="w-[35px] md:w-[50px] object-cover mx-auto"
-                src={s.image}
-                alt={s.name}
-              />
-            </Link>
+            <SwiperSlide key={i} className="pb-8 max-w-[25%] md:max-w-[250px]">
+              <Link
+                href={s.redirect}
+                key={i}
+                title={s.name}
+                className="bg-secondary h-[60px] py-1  rounded-md flex items-center"
+              >
+                <Image
+                  className="w-[35px] md:w-[50px] object-cover mx-auto"
+                  src={s.image}
+                  alt={s.name}
+                />
+              </Link>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
+        <div className="grid sponsor-grid gap-2 md:gap-3 grid-cols-[repeat(3,_minmax(0,1fr))] md:grid-cols-[repeat(5,_minmax(0,1fr))]  items-start justify-center"></div>
       </div>
     </div>
   );

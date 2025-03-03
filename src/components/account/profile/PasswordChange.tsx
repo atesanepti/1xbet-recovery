@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import {
   Dialog,
   DialogContent,
@@ -15,14 +15,22 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import zod from "zod";
+import { passwordChangeSchema } from "@/schema";
 
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FaLock } from "react-icons/fa";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { passageChange } from "@/action/update";
+import SweetToast from "@/components/ui/SweetToast";
+import RequestLoader from "@/components/loaders/RequestLoader";
 
 const PasswordChange = ({ children }: { children: React.ReactNode }) => {
+  const [pending, startTransition] = useTransition();
+
   const [previousPassType, setPreviousPassType] = useState<"text" | "password">(
     "password"
   );
@@ -33,18 +41,45 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
     "password"
   );
 
-  const form = useForm();
+  const form = useForm<zod.infer<typeof passwordChangeSchema>>({
+    defaultValues: {
+      currentPassword: "",
+      password: "",
+      confirmPassword: "",
+    },
+    resolver: zodResolver(passwordChangeSchema),
+  });
 
-  const handlePasswordChange = () => {
-    //TODo : change password
+  const handlePasswordChange = (
+    data: zod.infer<typeof passwordChangeSchema>
+  ) => {
+    startTransition(() => {
+      passageChange(data).then((res) => {
+        if (res.success) {
+          SweetToast.fire({
+            icon: "success",
+            title: res.success,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else if (res.error) {
+          SweetToast.fire({
+            icon: "error",
+            title: res.error,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+    });
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="bg-secondary p-4 md:p-6">
+      <DialogContent className="bg-secondary p-4 md:p-6 ">
         <DialogHeader>
-          <DialogTitle className="text-white uppercase">
+          <DialogTitle className="text-white uppercase font-medium text-sm">
             password change
           </DialogTitle>
         </DialogHeader>
@@ -52,14 +87,16 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handlePasswordChange)}>
               <FormField
-                name="prePassword"
+                name="currentPassword"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <div className="flex items-center border border-border mb-2 ">
                         <div className=" flex-1  ">
                           <Input
+                            disabled={pending}
                             {...field}
+                            type={previousPassType}
                             placeholder="Previous password"
                             className="placeholder:text-muted text-white  border-none"
                           />
@@ -67,6 +104,7 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
 
                         <div className="p-2 w-12 relative flex justify-center items-center">
                           <button
+                            type="button"
                             onClick={() =>
                               previousPassType == "text"
                                 ? setPreviousPassType("password")
@@ -91,14 +129,16 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
               />
 
               <FormField
-                name="newPassword"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <div className="flex items-center border border-border mb-2 ">
                         <div className=" flex-1  ">
                           <Input
+                            disabled={pending}
                             {...field}
+                            type={newPassType}
                             placeholder="New password"
                             className="placeholder:text-muted text-white border-none"
                           />
@@ -106,6 +146,7 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
 
                         <div className="p-2 w-12 relative flex justify-center items-center">
                           <button
+                            type="button"
                             onClick={() =>
                               newPassType == "text"
                                 ? setNewPassType("password")
@@ -137,14 +178,17 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
                       <div className="flex items-center border border-border mb-2 ">
                         <div className=" flex-1  ">
                           <Input
+                            disabled={pending}
+                            type={confirmPassType}
                             {...field}
-                            placeholder="New password"
+                            placeholder="Confirm password"
                             className="placeholder:text-muted text-white border-none"
                           />
                         </div>
 
                         <div className="p-2 w-12 relative flex justify-center items-center">
                           <button
+                            type="button"
                             onClick={() =>
                               confirmPassType == "text"
                                 ? setconfirmPassType("password")
@@ -168,10 +212,16 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
                 control={form.control}
               />
 
-              <Button variant={"destructive"} className="mt-2 w-full">
-                <FaLock className="w-3 h-3 text-white" />
-                SAVE
-              </Button>
+              {pending ? (
+                <div className="mt-2">
+                  <RequestLoader />
+                </div>
+              ) : (
+                <Button className="mt-2 w-full text-white">
+                  <FaLock className="w-3 h-3 " />
+                  SAVE
+                </Button>
+              )}
             </form>
           </Form>
         </div>

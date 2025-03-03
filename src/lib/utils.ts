@@ -15,3 +15,4 @@ export const nDArrayMaker = <T>(array: Array<any>, n: number) => {
 
   return nDArray;
 };
+

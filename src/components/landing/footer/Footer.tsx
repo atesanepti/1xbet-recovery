@@ -9,6 +9,7 @@ import visa_master_card from "@/../public/assets/images/visa_mastercard.png";
 import SiteContent from "../content/SiteContent";
 import About from "../about/About";
 import Sponsors from "../sponsors/Sponsors";
+import SupportLine from "../SupportLine";
 
 const Footer = () => {
   return (
@@ -28,6 +29,8 @@ const Footer = () => {
             <FaFacebook className="w-4 h-4 md:w-5 md:h-5 text-white" />
           </Link>
         </div>
+
+        <SupportLine />
 
         <p className="text-[10px] md:text-xs text-muted mt-2 md:mt-3 w-[95%] md:w-[70%] mx-auto text-center">
           To register, users must accept the Terms of Service. If updated, users

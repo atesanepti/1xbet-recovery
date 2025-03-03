@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 import { Eye, EyeOff, Mail } from "lucide-react";
 
@@ -11,21 +11,57 @@ import {
   FormField,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
+import zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FloatingInput, FloatingLabel } from "../ui/floating-label-input";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Label } from "@/components/ui/label";
 import SocialMediaLogin from "./SocialMediaLogin";
+import { loginSchema } from "@/schema";
+import { login } from "@/action/login";
+import SweetToast from "../ui/SweetToast";
+import RequestLoader from "../loaders/RequestLoader";
+import { redirect, useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
-  const form = useForm();
+  const loginRedirect = useSearchParams().get("redirect") || "/";
+
+  const [pending, startTransition] = useTransition();
+  const form = useForm<zod.infer<typeof loginSchema>>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: zodResolver(loginSchema),
+  });
 
   const [passwordType, setPasswordType] = useState<"text" | "password">(
     "password"
   );
 
-  const handleLogin = () => {
-    // TODO : handle login api call
+  const handleLogin = (data: zod.infer<typeof loginSchema>) => {
+    startTransition(() => {
+      login(data).then((res) => {
+        if (res.success) {
+          SweetToast.fire({
+            icon: "success",
+            title: res.success,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          location.reload();
+          redirect(loginRedirect);
+        } else if (res.error) {
+          SweetToast.fire({
+            icon: "error",
+            title: res.error,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+    });
   };
 
   const togglePasswordType = () => {
@@ -49,6 +85,7 @@ const LoginForm = () => {
                     <div className="relative flex-1 ">
                       <FloatingInput
                         {...field}
+                        disabled={pending}
                         id="floating-customize"
                         className=" border-none "
                       />
@@ -79,9 +116,10 @@ const LoginForm = () => {
                     <div className="relative flex-1  ">
                       <FloatingInput
                         {...field}
+                        disabled={pending}
                         type={passwordType}
                         id="floating-customize-2"
-                        className=" border-none"
+                        className="border-none"
                       />
                       <FloatingLabel htmlFor="floating-customize-2">
                         Password
@@ -89,7 +127,7 @@ const LoginForm = () => {
                     </div>
 
                     <div className="p-2 w-12 relative flex justify-center items-center">
-                      <button onClick={togglePasswordType}>
+                      <button type="button" onClick={togglePasswordType}>
                         {passwordType == "text" ? (
                           <EyeOff className="text-accent w-4 h-4 md:w-5 md:h-5" />
                         ) : (
@@ -109,7 +147,7 @@ const LoginForm = () => {
 
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center gap-2">
-              <input type="checkbox" id="remember" />
+              <input type="checkbox" id="emember" />
               <Label
                 htmlFor="remember"
                 className="text-sm text-primary-foreground font-medium"
@@ -126,9 +164,15 @@ const LoginForm = () => {
             </Link>
           </div>
 
-          <Button variant={"ghost"} className="w-full">
-            Login
-          </Button>
+          {pending ? (
+            <div>
+              <RequestLoader />
+            </div>
+          ) : (
+            <Button variant={"ghost"} className="w-full">
+              Login
+            </Button>
+          )}
         </form>
 
         <span className="text-[10px] md:text-xs text-muted-foreground my-3 block text-center">
