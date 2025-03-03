@@ -5,7 +5,10 @@ import zod from "zod";
 
 import { db } from "@/lib/db";
 import { findUserByEmail } from "@/data/user";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
+export const config = {
+  runtime: "nodejs",
+};
 import { playerIdGenerate } from "@/lib/helpers";
 import { INTERNAL_SERVER_ERROR } from "@/error";
 import { SIGNUP_SUCCESS } from "@/success";
