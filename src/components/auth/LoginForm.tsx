@@ -23,7 +23,7 @@ import { login } from "@/action/login";
 import SweetToast from "../ui/SweetToast";
 import RequestLoader from "../loaders/RequestLoader";
 import { redirect, useSearchParams } from "next/navigation";
-
+import { Suspense } from "react";
 const LoginForm = () => {
   const loginRedirect = useSearchParams().get("redirect") || "/";
 
@@ -73,115 +73,117 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleLogin)}>
-          <FormField
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center border border-border mb-2 md:mb-3">
-                    <div className="relative flex-1 ">
-                      <FloatingInput
-                        {...field}
-                        disabled={pending}
-                        id="floating-customize"
-                        className=" border-none "
-                      />
-                      <FloatingLabel htmlFor="floating-customize">
-                        ID OR Email
-                      </FloatingLabel>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="w-full">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleLogin)}>
+            <FormField
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="flex items-center border border-border mb-2 md:mb-3">
+                      <div className="relative flex-1 ">
+                        <FloatingInput
+                          {...field}
+                          disabled={pending}
+                          id="floating-customize"
+                          className=" border-none "
+                        />
+                        <FloatingLabel htmlFor="floating-customize">
+                          ID OR Email
+                        </FloatingLabel>
+                      </div>
+
+                      <div className="p-2 w-12 relative flex justify-center items-center">
+                        <Mail className="text-accent w-4 h-4 md:w-5 md:h-5" />
+
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
+                      </div>
                     </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+              control={form.control}
+            />
 
-                    <div className="p-2 w-12 relative flex justify-center items-center">
-                      <Mail className="text-accent w-4 h-4 md:w-5 md:h-5" />
+            <FormField
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="flex items-center border border-border ">
+                      <div className="relative flex-1  ">
+                        <FloatingInput
+                          {...field}
+                          disabled={pending}
+                          type={passwordType}
+                          id="floating-customize-2"
+                          className="border-none"
+                        />
+                        <FloatingLabel htmlFor="floating-customize-2">
+                          Password
+                        </FloatingLabel>
+                      </div>
 
-                      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
+                      <div className="p-2 w-12 relative flex justify-center items-center">
+                        <button type="button" onClick={togglePasswordType}>
+                          {passwordType == "text" ? (
+                            <EyeOff className="text-accent w-4 h-4 md:w-5 md:h-5" />
+                          ) : (
+                            <Eye className="text-accent w-4 h-4 md:w-5 md:h-5" />
+                          )}
+                        </button>
+
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
+                      </div>
                     </div>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-            control={form.control}
-          />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+              control={form.control}
+            />
 
-          <FormField
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center border border-border ">
-                    <div className="relative flex-1  ">
-                      <FloatingInput
-                        {...field}
-                        disabled={pending}
-                        type={passwordType}
-                        id="floating-customize-2"
-                        className="border-none"
-                      />
-                      <FloatingLabel htmlFor="floating-customize-2">
-                        Password
-                      </FloatingLabel>
-                    </div>
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="emember" />
+                <Label
+                  htmlFor="remember"
+                  className="text-sm text-primary-foreground font-medium"
+                >
+                  Remember
+                </Label>
+              </div>
 
-                    <div className="p-2 w-12 relative flex justify-center items-center">
-                      <button type="button" onClick={togglePasswordType}>
-                        {passwordType == "text" ? (
-                          <EyeOff className="text-accent w-4 h-4 md:w-5 md:h-5" />
-                        ) : (
-                          <Eye className="text-accent w-4 h-4 md:w-5 md:h-5" />
-                        )}
-                      </button>
-
-                      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[2px] h-7 bg-[#d5e4f0]"></div>
-                    </div>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-            control={form.control}
-          />
-
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="emember" />
-              <Label
-                htmlFor="remember"
-                className="text-sm text-primary-foreground font-medium"
+              <Link
+                href="#"
+                className="text-[10px] text-xs text-muted-foreground hover:underline hover:text-brand-foreground"
               >
-                Remember
-              </Label>
+                Forgot your password?
+              </Link>
             </div>
 
-            <Link
-              href="#"
-              className="text-[10px] text-xs text-muted-foreground hover:underline hover:text-brand-foreground"
-            >
-              Forgot your password?
-            </Link>
-          </div>
+            {pending ? (
+              <div>
+                <RequestLoader />
+              </div>
+            ) : (
+              <Button variant={"ghost"} className="w-full">
+                Login
+              </Button>
+            )}
+          </form>
 
-          {pending ? (
-            <div>
-              <RequestLoader />
-            </div>
-          ) : (
-            <Button variant={"ghost"} className="w-full">
-              Login
-            </Button>
-          )}
-        </form>
+          <span className="text-[10px] md:text-xs text-muted-foreground my-3 block text-center">
+            You can log in to the website via:
+          </span>
 
-        <span className="text-[10px] md:text-xs text-muted-foreground my-3 block text-center">
-          You can log in to the website via:
-        </span>
-
-        <SocialMediaLogin />
-      </Form>
-    </div>
+          <SocialMediaLogin />
+        </Form>
+      </div>
+    </Suspense>
   );
 };
 

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import TabBar from "@/components/landing/TabBar";
 import Wallet from "@/components/account/Wallet";

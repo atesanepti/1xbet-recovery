@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 import { FaLock } from "react-icons/fa";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { passageChange } from "@/action/update";
-import SweetToast from "@/components/ui/SweetToast";
+// import SweetToast from "@/components/ui/SweetToast";
 import RequestLoader from "@/components/loaders/RequestLoader";
 
 const PasswordChange = ({ children }: { children: React.ReactNode }) => {
@@ -56,19 +56,19 @@ const PasswordChange = ({ children }: { children: React.ReactNode }) => {
     startTransition(() => {
       passageChange(data).then((res) => {
         if (res.success) {
-          SweetToast.fire({
-            icon: "success",
-            title: res.success,
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          // SweetToast.fire({
+          //   icon: "success",
+          //   title: res.success,
+          //   showConfirmButton: false,
+          //   timer: 2000,
+          // });
         } else if (res.error) {
-          SweetToast.fire({
-            icon: "error",
-            title: res.error,
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          // SweetToast.fire({
+          //   icon: "error",
+          //   title: res.error,
+          //   showConfirmButton: false,
+          //   timer: 2000,
+          // });
         }
       });
     });

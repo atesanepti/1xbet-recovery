@@ -2,7 +2,7 @@
 import React, { useEffect, useTransition } from "react";
 import zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import SweetToast from "@/components/ui/SweetToast";
+// import SweetToast from "@/components/ui/SweetToast";
 import {
   Dialog,
   DialogContent,
@@ -46,19 +46,19 @@ const NumberChange = ({ children }: { children: React.ReactNode }) => {
     startTransition(() => {
       phoneChange(data).then((res) => {
         if (res.success) {
-          SweetToast.fire({
-            icon: "success",
-            title: res.success,
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          // SweetToast.fire({
+          //   icon: "success",
+          //   title: res.success,
+          //   showConfirmButton: false,
+          //   timer: 2000,
+          // });
         } else if (res.error) {
-          SweetToast.fire({
-            icon: "error",
-            title: res.error,
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          // SweetToast.fire({
+          //   icon: "error",
+          //   title: res.error,
+          //   showConfirmButton: false,
+          //   timer: 2000,
+          // });
         }
       });
     });

@@ -7,7 +7,7 @@ import PaymentWapper from "@/components/payment/PaymentWapper";
 const DepositPage = () => {
   return (
     <div className="bg-white  md:px-4 md:py-5">
-      <main >
+      <main>
         <PageHeader label="Deposit into personal account" />
 
         <div className="p-1">
