@@ -3,6 +3,10 @@ import Credentials from "next-auth/providers/credentials";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
+export const config = {
+  runtime: "nodejs",
+};
+
 export default {
   providers: [
     Credentials({
