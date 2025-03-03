@@ -5,7 +5,7 @@ import zod from "zod";
 
 import { db } from "@/lib/db";
 import { findUserByEmail } from "@/data/user";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 export const config = {
   runtime: "nodejs",
 };

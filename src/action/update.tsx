@@ -7,7 +7,7 @@ import {
   passwordChangeSchema,
   phoneNumberChangeSchema,
 } from "@/schema";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 export const config = {
   runtime: "nodejs",
 };
